@@ -1,7 +1,9 @@
 cmake_minimum_required( VERSION 2.6 )
 project( ES3_Book )
 
-include_directories( External/Include )
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DLINUX -DEGL_API_FB ")
+
+include_directories( /usr/include/EGL )
 include_directories( Common/Include )
 
 find_library( OPENGLES3_LIBRARY GLESv2 "OpenGL ES v3.0 library")
@@ -26,5 +28,5 @@ SUBDIRS( Common
          Chapter_14/ParticleSystem
          Chapter_14/ParticleSystemTransformFeedback 
          Chapter_14/Shadows 
-         Chapter_14/TerrainRendering )	
-		
+         Chapter_14/TerrainRendering )
+
