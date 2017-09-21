@@ -109,6 +109,7 @@ int Init ( ESContext *esContext )
       "layout(location = 0) out vec4 outColor;             \n"
       "uniform sampler2D s_baseMap;                        \n"
       "uniform sampler2D s_lightMap;                       \n"
+      "vec4 color = vec4(1.0, 0.0, 0.0, 1.0);      \n"
       "void main()                                         \n"
       "{                                                   \n"
       "  vec4 baseColor;                                   \n"
@@ -116,7 +117,7 @@ int Init ( ESContext *esContext )
       "                                                    \n"
       "  baseColor = texture( s_baseMap, v_texCoord );     \n"
       "  lightColor = texture( s_lightMap, v_texCoord );   \n"
-      "  outColor = baseColor * (lightColor + 0.25);       \n"
+      "  outColor = mix( baseColor, color, lightColor.r ); \n"
       "}                                                   \n";
 
    // Load the shaders and get a linked program object
